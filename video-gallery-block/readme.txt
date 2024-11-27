@@ -2,9 +2,9 @@
 Contributors: bplugins, abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, video, gallery, video filter, filter
-Requires at least: 6.2+
-Tested up to: 6.6.2
-Stable tag: 1.0.7
+Requires at least: 6.5+
+Tested up to: 6.7
+Stable tag: 1.0.8
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -21,6 +21,7 @@ A lightweight plugin to make and display your videos professionally. This is a b
 
 = Features =
 - **Album**: Create and set albums for video and filter with them.
+- **Hide All Album**: Hide the all(common) album button by remove its label.
 - **Video Thumbnail**: Generate thumbnail from video.
 - **Thumbnail**: Upload thumbnail/poster for the video.
 - **Caption**: Add a caption for every video in the popup.
@@ -112,33 +113,8 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
-= 1.0.7 =
-* Option for changing the common label of the filter.
-
-= 1.0.6 =
-* Add Shadow option for gallery
-
-= 1.0.5 =
-* Video height for vertical video
-
-= 1.0.4 =
-* Add caption option
-* Not load scripts if block is not used
-
-= 1.0.3 =
-* Add translate feature
-
-= 1.0.2 =
-* Fix add remove video error
-
-= 1.0.1 =
-* Generate the thumbnail from the video
-
-= 1.0.0 =
-* Initial Release
-
-
-== Upgrade Notice ==
+= 1.0.8 - 27th Nov 24 =
+* Hide the all(common) album button by remove its label.
 
 = 1.0.7 =
 * Option for changing the common label of the filter.
