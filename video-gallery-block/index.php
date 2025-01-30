@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Video Gallery Block
  * Description: Display your videos as gallery in a professional way.
- * Version: 1.0.8
+ * Version: 1.1.0
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 // Constant
-define( 'VGB_PLUGIN_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.8' );
+define( 'VGB_PLUGIN_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.1.0' );
 define( 'VGB_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'VGB_PUBLIC_DIR', VGB_DIR_URL . 'public/' );
 define( 'VGB_DIR_PATH', plugin_dir_path( __FILE__ ) );
@@ -32,9 +32,6 @@ if( !class_exists( 'VGBPlugin' ) ) {
 		}
 	
 		function wpEnqueueScripts(){
-			wp_register_script( 'fancybox3', VGB_PUBLIC_DIR . 'js/fancybox.min.js', [], '3.5.7', true );
-			wp_register_style( 'fancybox3', VGB_PUBLIC_DIR . 'css/fancybox.min.css', [], '3.5.7' );
-	
 			wp_register_script( 'plyr', VGB_PUBLIC_DIR . 'js/plyr.js', [], '3.7.2', true );
 			wp_register_style( 'plyr', VGB_PUBLIC_DIR . 'css/plyr.css', [], '3.7.2' );
 		}

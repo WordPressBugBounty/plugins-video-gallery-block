@@ -3,8 +3,8 @@ Contributors: bplugins, abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, video, gallery, video filter, filter
 Requires at least: 6.5+
-Tested up to: 6.7
-Stable tag: 1.0.8
+Tested up to: 6.7.1
+Stable tag: 1.1.0
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -113,7 +113,10 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
-= 1.0.8 - 27th Nov 24 =
+= 1.1.0 - 30 Jan 25 =
+* Update Fancybox library v5.
+
+= 1.0.8 - 27 Nov 24 =
 * Hide the all(common) album button by remove its label.
 
 = 1.0.7 =
@@ -139,4 +142,4 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 * Generate the thumbnail from the video
 
 = 1.0.0 =
-* Initial Release
+* Initial Release.

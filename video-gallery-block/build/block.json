@@ -139,7 +139,6 @@
   "editorStyle": "file:./index.css",
   "style": [
     "file:./view.css",
-    "fancybox3",
     "plyr"
   ],
   "render": "file:./render.php",
@@ -148,7 +147,6 @@
     "jquery",
     "lodash",
     "isotope",
-    "fancybox3",
     "plyr"
   ]
 }
