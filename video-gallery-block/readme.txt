@@ -3,7 +3,7 @@ Contributors: bplugins, abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, video, gallery, video filter, filter
 Requires at least: 6.5+
-Tested up to: 6.7.1
+Tested up to: 6.8.1
 Stable tag: 1.1.0
 Requires PHP: 7.1
 License: GPLv3 or later
@@ -139,7 +139,7 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 * Fix add remove video error
 
 = 1.0.1 =
-* Generate the thumbnail from the video
+* Generate the thumbnail from the video.
 
 = 1.0.0 =
 * Initial Release.
