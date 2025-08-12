@@ -102,14 +102,14 @@
       "type": "object",
       "default": {
         "color": "#fff",
-        "bg": "#4527a4"
+        "bg": "#146ef5"
       }
     },
     "filterBtnHoverColors": {
       "type": "object",
       "default": {
         "color": "#fff",
-        "bg": "#8344c5"
+        "bg": "#ff7a00"
       }
     },
     "itemHeight": {
