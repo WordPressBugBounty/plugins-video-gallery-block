@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vgblk/masonry-video-grid-one",
+  "version": "1.0.0",
+  "title": "Masonry Video Grid",
+  "category": "videoblocks",
+  "description": "A masonry video grid displays videos in a dynamic, staggered layout that optimizes space while showcasing varied video sizes seamlessly.",
+  "keywords": [
+    "Masonry Video Grid",
+    "Masonry",
+    "Video",
+    "Grid",
+    "Video Gallery",
+    "Video Grid"
+  ],
+  "textdomain": "video-gallery",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vgblk/lightbox-video-gallery",
+  "version": "1.0.0",
+  "title": "Lightbox Video Gallery",
+  "category": "videoblocks",
+  "description": "Lightbox Video Gallery lets you showcase videos in a sleek, responsive gallery with lightbox popups for an enhanced viewing experience",
+  "keywords": [
+    "lightbox video gallery",
+    "lightbox",
+    "light box",
+    "video gallery",
+    "gallery"
+  ],
+  "textdomain": "video-gallery",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}

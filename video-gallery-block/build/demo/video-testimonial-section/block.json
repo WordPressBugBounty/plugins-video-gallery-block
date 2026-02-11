@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vgblk/video-testimonial-section",
+  "version": "1.0.0",
+  "title": "Video Testimonial Section",
+  "category": "videoblocks",
+  "description": "A Video Testimonial Section features brief, authentic customer videos sharing positive experiences to build trust and engage visitors.",
+  "keywords": [
+    "video",
+    "testimonial",
+    "section",
+    "video testimonial section",
+    "video testimonial",
+    "testimonial section"
+  ],
+  "textdomain": "video-gallery",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vgblk/slider-autoplay-video",
+  "version": "1.0.0",
+  "title": "Slider Autoplay Video",
+  "category": "videoblocks",
+  "description": "Slider Autoplay Video is a responsive Swiper-based block that automatically plays videos in a horizontally scrollable slider with smooth transitions and autoplay functionality.",
+  "keywords": [
+    "Slider Autoplay Video",
+    "Slider",
+    "Autoplay",
+    "Video",
+    "Video Slider",
+    "Video Gallery"
+  ],
+  "textdomain": "video-gallery",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}

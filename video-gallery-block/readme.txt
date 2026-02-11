@@ -1,55 +1,100 @@
-=== Video Gallery Block – Display Multiple Videos in Grid or Lightbox ===
-Contributors: bplugins, abuhayat, charlescormier
+=== Video Gallery Block - Display your videos as a gallery in a professional way ===
+Contributors: bplugins, abuhayat, charlescormier, himur98
 Donate link: https://www.buymeacoffee.com/abuhayat
-Tags: block, video, gallery, video filter, filter
-Requires at least: 6.5+
-Tested up to: 6.8
+Tags: video gallery block, video lightbox, youtube video gallery, vimeo video gallery, wordpress video block
+Requires at least: 6.5
+Tested up to: 6.9
 Stable tag: 1.1.1
 Requires PHP: 7.1
 License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Display your videos as a gallery in a professional way.
 
 == Description ==
 
-A lightweight plugin to make and display your videos professionally. This is a block plugin that adds a new block in the Gutenberg page editor called "Video Gallery".
+= Responsive Video Gallery & Lightbox Block for WordPress =
+
+**Video Gallery Block** is a lightweight and flexible Gutenberg plugin for creating responsive **video galleries, grids, and lightbox popups** without writing any code.
+
+Easily display **YouTube, Vimeo, Wistia, or self-hosted HTML5 videos** in a modern grid layout. Organize videos using **albums and filters**, and open them in a smooth **popup lightbox** for an immersive viewing experience.
+
+This plugin is ideal for creating **video portfolios, testimonials, product showcases, YouTube galleries, and Vimeo collections** inside the native WordPress block editor.
+
+**[Live Demo](https://bblockswp.com/demo/video-gallery)**
+**[Product Page](https://bplugins.com/products/video-gallery-block)**
 
 
-**[Demos](https://bblockswp.com/demo/video-gallery)**
+= Free Features =
+
+- Video Gallery Block with responsive layouts.
+- Albums and filters for organizing videos.
+- Responsive columns for Desktop, Tablet, and Mobile.
+- Support for YouTube, Vimeo, and self-hosted videos.
+- Custom styling options (gap, padding, border, background, shadow).
+- Automatic or custom thumbnails.
+- Video captions.
+- Lightbox popup viewer.
+- Optimized script loading.
+- Translation ready.
 
 
-= Features =
-- **Album**: Create and set albums for video and filter with them.
-- **Hide All Album**: Hide the all(common) album button by remove its label.
-- **Video Thumbnail**: Generate thumbnail from video.
-- **Thumbnail**: Upload thumbnail/poster for the video.
-- **Caption**: Add a caption for every video in the popup.
-- **Layout**: Set column and their gaps, also, set popup video width as aspect ratio.
-- **Gallery Style**: Set Background, Padding, Border and Shadow for the Wrapper.
-- **Filter Buttons Style**: Style the filter button (Typography, Colors, Hover Colors).
-- **Item**: Set the height of the gallery item.
+= Pro Features =
+
+Note: Pro features require a separate paid license.
+
+- 8 premium blocks including Slider, Carousel, Playlist, and Masonry.
+- Masonry and mixed-ratio layouts.
+- Sliders and carousels with autoplay.
+- Playlist gallery with navigation.
+- Parallax background video sections.
+- Advanced typography and overlays.
+- Custom navigation and player controls.
+- WooCommerce product carousel.
+- Priority support.
 
 
-= How to use =
-- First, install the Video Gallery Block plugin.
-- Add the Video Gallery Block from the block category called "Widgets" in the Gutenberg editor.
-- You can change block settings from the right-side settings sidebar.
-- Enjoy!
+= How to Use =
+
+1. Insert the Block  
+   - Open any Page or Post in the WordPress editor (Gutenberg). 
+   - Click the + (Toggle Block Inserter) button in the top-left corner. 
+   - Search for "Video Gallery" or scroll down to the Video Gallery category. 
+   - Click on the block you want to use (e.g., Video Gallery, Masonry Video Grid, etc.).
+
+2. Configure Your Gallery  
+   Once the block is inserted, you'll see options in the Editor Sidebar (Inspector) on the right:
+   - Add video URLs (YouTube, Vimeo, or self-hosted).
+   - Create albums for filtering.
+   - Adjust columns and layout.
+   - Customize styling options.
+   - Enable or disable filters.
+
+3. Handle Premium Blocks  
+   If you try to use a Pro block (like Parallax Row or Video Slider) while on the Free version:
+   - A placeholder will appear.
+   - This placeholder includes a "Get Premium" button with a crown icon to encourage an upgrade. 
+   - You can easily delete this placeholder block if you don't want to upgrade.
+
+4. Preview and Publish  
+   Preview your page and publish when ready.
+
 
 * For Installation help click on Installation Tab
 
 
 = Feedback =
+
 - Did you like this plugin? Dislike it? Do you have a feature request? [Please share your feedback with us](mailto:support@bplugins.com 'Send feedback')
 
 
-### Check out the Parent Plugin of this plugin-
+### Check Out The Parent Plugin of This Plugin-
 
 [**B Blocks**](https://bblockswp.com) – A blocks collection and page building tool for Gutenberg.
 
 
-### Check out our other WordPress Plugins-
+= Related Plugins =
+
+Other plugins by our team:
 
 [**Html5 Video Player**](https://bplugins.com/products/html5-video-player/) – Display videos as single and playlist in multiple skins.
 
@@ -66,83 +111,120 @@ A lightweight plugin to make and display your videos professionally. This is a b
 
 == Installation ==
 
-= From Gutenberg Editor: =
-1. Go to the WordPress Block/Gutenberg Editor
-2. Search For **Video Gallery Block**
-3. Click on the **Video Gallery Block** to add the block
+= From Gutenberg Editor =
 
-= Download & Upload: =
-1. Download the **Video Gallery Block** plugin (*.zip file*)
-2. In your admin area, go to the Plugins menu and click on **Add New**
-3. Click on **Upload Plugin** and choose the **`Video Gallery-block.zip`** file and click on **Install Now**
-4. Activate the plugin and Enjoy!
+1. Open the block editor.
+2. Click Add Block (+).
+3. Search for "Video Gallery Block".
+4. Insert the block.
 
-= Manually: =
-1. Download and upload the **Video Gallery Block** plugin to the **`/wp-content/plugins/`** directory
-2. Activate the plugin through the Plugins menu in WordPress
+= Upload Plugin =
+
+1. Download the plugin ZIP file.
+2. Go to Plugins → Add New → Upload Plugin.
+3. Upload `video-gallery-block.zip`.
+4. Click Install Now and activate.
+
+= Manual Installation =
+
+1. Upload the plugin folder to `/wp-content/plugins/`.
+2. Activate the plugin from the Plugins menu.
 
 
 == Frequently Asked Questions ==
 
 = Is Video Gallery Block free? =
+Yes. The free version includes albums, filters, captions, thumbnails, and basic styling. A Pro version is available with advanced features.
 
-Yes, Video Gallery Block is a free Gutenberg Block plugin.
+= What extra features are included in Pro? =
+Pro unlocks sliders, carousels, advanced layouts, typography controls, and additional video sources.
 
 = Does it work with any WordPress theme? =
+Yes. It is compatible with all modern WordPress themes.
 
-Yes, it will work with any standard WordPress theme.
+= Can I customize the gallery design? =
+Yes. Free users can customize layout and basic styling. Pro users get advanced design controls.
 
-= Can I change block settings? =
+= Can I create multiple video galleries? =
+Yes. You can create unlimited galleries across your site.
 
-Yes, you can change block settings from the Gutenberg block editor's right sidebar.
+= Is it mobile-friendly? =
+Yes. The gallery is fully responsive.
 
-= How many times can I reuse a block? =
+= Can I use my own video files? =
+Yes. You can use YouTube, Vimeo, Wistia, and self-hosted HTML5 videos (Pro).
 
-You can use unlimited times as you want.
-
-= Where can I get support? =
-
-You can post your questions on the [support forum here](https://wordpress.org/support/plugin/video-gallery-block/)
+= How do I get support? =
+Free users can use the WordPress.org support forum.  
+Pro users receive priority email support.
 
 
 == Screenshots ==
 
-1. Video Gallery Settings
-2. Video Gallery
+1. Video Gallery Block – Default Layout.
+2. Video Testimonial Section.
+3. Parallax Video Gallery.
+4. Video Slider.
+5. Autoplay Video Slider.
+6. Lightbox Video Gallery.
+7. Masonry Video Grid.
+8. Video Playlist Gallery.
+9. Video Carousel.
+10. Gutenberg Block Settings.
+11. Classic Shortcode Generator.
 
 
 == Changelog ==
 
-= 1.1.1 - 12 Aug 25 =
-* Fix issues.
+= 1.1.1 - 12 Aug 2025 =
+* Fixed minor issues.
+* Added 8 new block styles.
 
-= 1.1.0 - 30 Jan 25 =
-* Update Fancybox library v5.
+= 1.1.0 - 30 Jan 2025 =
+* Updated Fancybox library to v5.
 
-= 1.0.8 - 27 Nov 24 =
-* Hide the all(common) album button by remove its label.
+= 1.0.8 - 27 Nov 2024 =
+* Added option to hide the "All" album filter.
 
-= 1.0.7 =
-* Option for changing the common label of the filter.
+= 1.0.7 - 27 Nov 2024 =
+* Added custom label option for common filter.
 
 = 1.0.6 =
-* Add Shadow option for gallery
+* Added gallery shadow options.
 
 = 1.0.5 =
-* Video height for vertical video
+* Improved vertical video height handling.
 
 = 1.0.4 =
-* Add caption option
-* Not load scripts if block is not used
+* Added video captions.
+* Prevented loading scripts when block is not used.
 
 = 1.0.3 =
-* Add translate feature
+* Added translation support.
 
 = 1.0.2 =
-* Fix add remove video error
+* Fixed add/remove video issues.
 
 = 1.0.1 =
-* Generate the thumbnail from the video
+* Automatic video thumbnail generation.
 
 = 1.0.0 =
-* Initial Release.
+* Initial release.
+
+
+== Upgrade Notice ==
+
+= 1.1.1 =
+Bug fixes and 8 new gallery styles added.
+
+= 1.1.0 =
+Fancybox updated to version 5.
+
+= 1.0.8 =
+Added option to hide the "All" album filter button.
+
+= 1.0.4 =
+Introduced video captions and optimized script loading.
+
+= 1.0.1 =
+Automatic video thumbnail generation added.

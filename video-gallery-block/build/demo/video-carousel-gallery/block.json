@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vgblk/video-carousel-gallery",
+  "version": "1.0.0",
+  "title": "Video Carousel Gallery",
+  "category": "videoblocks",
+  "description": "A powerful tool to create and display beautiful video carousel in a carousel layout.",
+  "keywords": [
+    "Video Carousel Gallery",
+    "Video Carousel",
+    "Video Gallery",
+    "Video Slider",
+    "Video Gallery"
+  ],
+  "textdomain": "video-gallery",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}
