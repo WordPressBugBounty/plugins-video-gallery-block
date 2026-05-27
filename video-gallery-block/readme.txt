@@ -1,85 +1,94 @@
-=== Video Gallery Block - Display your videos as a gallery in a professional way ===
+=== Video Gallery Block ===
 Contributors: bplugins, abuhayat, charlescormier, himur98
 Donate link: https://www.buymeacoffee.com/abuhayat
-Tags: video gallery block, video lightbox, youtube video gallery, vimeo video gallery, wordpress video block
+Tags: block, video gallery, youtube video gallery, vimeo video gallery, masonry video gallery
 Requires at least: 6.5
-Tested up to: 6.9
-Stable tag: 1.1.1
-Requires PHP: 7.1
+Tested up to: 7.0
+Stable tag: 1.1.3
+Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
+Display your videos as a gallery in a professional way.
 
 == Description ==
 
-= Responsive Video Gallery & Lightbox Block for WordPress =
+[Video Gallery Block](https://bplugins.com/products/video-gallery-block) is a lightweight WordPress video gallery plugin that lets you create responsive video galleries, grids, and lightbox popups directly inside the Gutenberg block editor.
 
-**Video Gallery Block** is a lightweight and flexible Gutenberg plugin for creating responsive **video galleries, grids, and lightbox popups** without writing any code.
+[Video Gallery Block](https://bplugins.com/products/video-gallery-block) | [Pricing](https://bplugins.com/products/video-gallery-block/pricing/) | [Support](https://bplugins.com/support/)| [Demo](https://bblockswp.com/demo/video-gallery)
 
-Easily display **YouTube, Vimeo, Wistia, or self-hosted HTML5 videos** in a modern grid layout. Organize videos using **albums and filters**, and open them in a smooth **popup lightbox** for an immersive viewing experience.
+Display YouTube, Vimeo, Wistia, or self-hosted HTML5 videos in clean and modern gallery layouts without writing any code. Organize videos using albums and filters, show them in responsive grids, and open videos in a smooth lightbox popup for a better viewing experience.
 
-This plugin is ideal for creating **video portfolios, testimonials, product showcases, YouTube galleries, and Vimeo collections** inside the native WordPress block editor.
+This Gutenberg video gallery block is perfect for creating video portfolios, testimonial sections, product video showcases, YouTube galleries, and Vimeo collections on any WordPress website.
 
-**[Live Demo](https://bblockswp.com/demo/video-gallery)**
-**[Product Page](https://bplugins.com/products/video-gallery-block)**
+=== Key Features – Free Version ===
+The free version includes everything needed to build responsive video galleries in the Gutenberg editor.
 
+- **Responsive Video Gallery Block**: Create video galleries with clean grid layouts that automatically adapt to desktop, tablet, and mobile screens.
+- **Album & Filter System**: Organize videos into albums and allow visitors to filter videos by category.
+- **Responsive Column Layouts**: Set different column numbers for Desktop, Tablet, and Mobile devices.
+- **Multiple Video Sources**: Add videos from YouTube, Vimeo, Wistia, or self-hosted HTML5 video files.
+- **Custom Styling Controls**: Adjust gallery spacing, padding, borders, backgrounds, and shadows directly from the block settings.
+- **Automatic or Custom Thumbnails**: Automatically generate thumbnails from videos or upload custom poster images.
+- **Video Captions**: Add captions or titles to each video displayed in the gallery.
+- **Lightbox Video Popup**: Play videos in an elegant popup lightbox for an immersive viewing experience.
+- **Optimized Script Loading**: Scripts only load when the block is used, helping maintain site performance.
+- **Translation Ready**: Fully compatible with multilingual websites.
 
-= Free Features =
+=== Video Gallery Block Pro – Unlock Advanced Video Layouts ===
+[Video Gallery Block Pro](https://bplugins.com/products/video-gallery-block/pricing/) extends the plugin with additional Gutenberg video blocks and advanced gallery layouts.
 
-- Video Gallery Block with responsive layouts.
-- Albums and filters for organizing videos.
-- Responsive columns for Desktop, Tablet, and Mobile.
-- Support for YouTube, Vimeo, and self-hosted videos.
-- Custom styling options (gap, padding, border, background, shadow).
-- Automatic or custom thumbnails.
-- Video captions.
-- Lightbox popup viewer.
-- Optimized script loading.
-- Translation ready.
+== Pro Features Include ==
 
+- **8 Premium Video Blocks**: Includes advanced blocks such as Video Slider, Carousel, Playlist Gallery, and Masonry Video Grid.
+- **Masonry & Mixed Ratio Layouts**: Display videos in dynamic masonry galleries or mixed aspect ratio grids.
+- **Video Sliders & Carousels**: Create interactive video sliders with autoplay and navigation controls.
+- **Playlist Video Gallery**: Build organized video playlists with navigation and sequential playback.
+- **Parallax Video Sections**: Add background video sections with parallax scrolling effects.
+- **Advanced Typography & Overlays**: Customize titles, captions, and overlay effects for each video.
+- **Custom Navigation & Player Controls**: Control slider navigation, autoplay behavior, and player interactions.
+- **WooCommerce Video Product Carousel**: Show product videos in carousel layouts for WooCommerce stores.
+- **Priority Support**: Get faster assistance and updates.
 
-= Pro Features =
+[Try the Video Gallery Block](https://bplugins.com/products/video-gallery-block/pricing/)  – Unlock all premium features now!
 
-Note: Pro features require a separate paid license.
+=== How to Use Video Gallery Block – Step-by-Step Guide ===
 
-- 8 premium blocks including Slider, Carousel, Playlist, and Masonry.
-- Masonry and mixed-ratio layouts.
-- Sliders and carousels with autoplay.
-- Playlist gallery with navigation.
-- Parallax background video sections.
-- Advanced typography and overlays.
-- Custom navigation and player controls.
-- WooCommerce product carousel.
-- Priority support.
+Getting started with the Video Gallery Block is quick and easy!
 
+== Step-by-Step Instructions ==
 
-= How to Use =
+== Insert the Video Gallery Block ==
 
-1. Insert the Block  
-   - Open any Page or Post in the WordPress editor (Gutenberg). 
-   - Click the + (Toggle Block Inserter) button in the top-left corner. 
-   - Search for "Video Gallery" or scroll down to the Video Gallery category. 
-   - Click on the block you want to use (e.g., Video Gallery, Masonry Video Grid, etc.).
+- Open any Page or Post in the WordPress Block Editor (Gutenberg).
+- Click the + (Add Block) button.
+- Search for “Video Gallery Block.”
+- Insert the block into your page.
 
-2. Configure Your Gallery  
-   Once the block is inserted, you'll see options in the Editor Sidebar (Inspector) on the right:
-   - Add video URLs (YouTube, Vimeo, or self-hosted).
-   - Create albums for filtering.
-   - Adjust columns and layout.
-   - Customize styling options.
-   - Enable or disable filters.
+== Add and Organize Videos ==
 
-3. Handle Premium Blocks  
-   If you try to use a Pro block (like Parallax Row or Video Slider) while on the Free version:
-   - A placeholder will appear.
-   - This placeholder includes a "Get Premium" button with a crown icon to encourage an upgrade. 
-   - You can easily delete this placeholder block if you don't want to upgrade.
+After inserting the block, configure the gallery using the block settings panel:
 
-4. Preview and Publish  
-   Preview your page and publish when ready.
+- Add video URLs from YouTube, Vimeo, or self-hosted sources.
+- Create albums for filtering videos.
+- Adjust column numbers and gallery layout.
+- Customize gallery styling options.
+- Enable or disable filter buttons.
 
+== Using Premium Blocks ==
+When you try to insert a Pro block (such as Video Slider or Parallax Row) while using the free version:
 
-* For Installation help click on Installation Tab
+- A placeholder block will appear.
+- The block includes a [Get Premium](https://bplugins.com/products/video-gallery-block/pricing/) button.
+- You can remove the placeholder if you choose not to upgrade.
+
+== Preview and Publish ==
+
+Preview the page to see how your video gallery appears on different devices, then publish your page.
+
+For installation help, see the Installation tab.
+
+[Live Demo](https://bblockswp.com/demo/video-gallery) | [Get Video Gallery Block PRO](https://bplugins.com/products/video-gallery-block/pricing/)
 
 
 = Feedback =
@@ -109,6 +118,42 @@ Other plugins by our team:
 [**Advanced Post Block**](https://bplugins.com/products/advanced-post-block/) – Show posts and custom posts in different layouts.
 
 
+== Source Code ==
+
+The non-minified source code for this plugin is available on our public repository:
+[GitHub Repository](https://github.com/bPlugins/video-gallery-block-free)
+
+== Third-Party Libraries ==
+
+= bpl-tools =
+* Source / GitHub: https://github.com/bPlugins/bpl-tools
+* License: GPL-2.0-or-later – https://www.gnu.org/licenses/gpl-2.0.html
+* Purpose: Shared utility library providing admin dashboard components and common Gutenberg editor controls.
+* External Services: The library may connect to bPlugins, WordPress.org, and Freemius services for product data and checkout functionality. See full details: https://github.com/bPlugins/bpl-tools#external-requests--why-they-are-made
+
+= Freemius Lite SDK =
+* **Source:** [https://bplugins.com/](https://bplugins.com/)
+* **GitHub:** [https://github.com/bPlugins/freemius-lite-sdk](https://github.com/bPlugins/freemius-lite-sdk)
+* **License:** GPL-2.0-or-later – [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
+* **Purpose:** Provides an opt-in consent form for usage tracking and analytics to help improve the plugin. No data is sent before explicit user consent.
+* **External Services:** Communicates with `api.bplugins.com` (activation events) and `wp.freemius.com` (opt-in processing) only after user opt-in. See [bPlugins Privacy Policy](https://bplugins.com/privacy-policy) and [Freemius Privacy Policy](https://freemius.com/privacy/).
+
+= Isotope =
+* Source / Website: https://isotope.metafizzy.co/
+* License: GPL-3.0 – https://isotope.metafizzy.co/license.html
+* Purpose: Layout library to filter and sort video gallery items.
+
+= Plyr =
+* Source / GitHub: https://github.com/sampotts/plyr
+* License: MIT – https://github.com/sampotts/plyr/blob/master/LICENSE.md
+* Purpose: Media player control wrapper for YouTube, Vimeo, and self-hosted HTML5 video files.
+
+= Fancybox =
+* Source / Website: https://fancyapps.com/fancybox/
+* License: GPL-3.0 – https://fancyapps.com/license/
+* Purpose: Lightbox library used to pop up and play videos when clicked in the gallery layout.
+
+
 == Installation ==
 
 = From Gutenberg Editor =
@@ -129,6 +174,16 @@ Other plugins by our team:
 
 1. Upload the plugin folder to `/wp-content/plugins/`.
 2. Activate the plugin from the Plugins menu.
+
+
+== Development ==
+
+This plugin uses modern JavaScript (React/ES6) compiled via Webpack.
+To compile the source code, please follow these steps:
+1. Clone the repository: `git clone https://github.com/bPlugins/video-gallery-block-free.git`
+2. Navigate to the plugin directory: `cd video-gallery-block-free`
+3. Install dependencies: `npm install`
+4. Compile the production assets: `npm run build`
 
 
 == Frequently Asked Questions ==
@@ -176,9 +231,23 @@ Pro users receive priority email support.
 
 == Changelog ==
 
+= 1.1.3 - 21 May 2026 =
+* Fixed: Prefixed generic 'admin-post' script handles with plugin-specific prefix.
+* Security: Fixed directory guideline issues.
+
+= 1.1.2 - 10 May 2026 =
+* Compliance: Standardized text domain to match plugin slug.
+* Compliance: Added human-readable source code link.
+* Compliance: Removed prohibited trialware file access restrictions.
+* Security: Added sanitization and escaping to settings and shortcodes.
+* Security: Added ABSPATH checks to all PHP files.
+* Maintenance: Updated Plyr.js to latest stable version.
+
 = 1.1.1 - 12 Aug 2025 =
 * Fixed minor issues.
 * Added 8 new block styles.
+* Added new shortcode styles.
+* Added new dashboard.
 
 = 1.1.0 - 30 Jan 2025 =
 * Updated Fancybox library to v5.
@@ -210,21 +279,3 @@ Pro users receive priority email support.
 
 = 1.0.0 =
 * Initial release.
-
-
-== Upgrade Notice ==
-
-= 1.1.1 =
-Bug fixes and 8 new gallery styles added.
-
-= 1.1.0 =
-Fancybox updated to version 5.
-
-= 1.0.8 =
-Added option to hide the "All" album filter button.
-
-= 1.0.4 =
-Introduced video captions and optimized script loading.
-
-= 1.0.1 =
-Automatic video thumbnail generation added.

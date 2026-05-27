@@ -1,16 +1,26 @@
 <?php
-namespace VGB;
+namespace VIDGALBLK;
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 class ShortCode {
     function __construct() {
-        add_shortcode('video_gallery', [$this, 'vgb_shortcode']);
+        add_shortcode('video_gallery', [$this, 'vidgalblk_shortcode']);
     }
+    function vidgalblk_shortcode($atts){
+        $atts = shortcode_atts( array(
+            'id' => 0,
+        ), $atts, 'video_gallery' );
 
-    function vgb_shortcode($atts){
-        $post_id = $atts['id'];
+        $post_id = absint( $atts['id'] );
+        if ( ! $post_id ) {
+            return '';
+        }
+
         $post = get_post( $post_id );
-
-        if ( !$post ) {
+        if ( !$post || $post->post_type !== 'video-gallery-block' ) {
             return '';
         }
 
@@ -40,9 +50,11 @@ class ShortCode {
                 return '';
         }
     }
-
     function displayContent( $post ){
         $blocks = parse_blocks( $post->post_content );
-        return render_block( $blocks[0] );
+        if ( empty( $blocks ) ) {
+            return '';
+        }
+        return wp_kses_post( render_block( $blocks[0] ) );
     }
 }
