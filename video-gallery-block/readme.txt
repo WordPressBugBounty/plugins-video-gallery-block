@@ -2,7 +2,7 @@
 Contributors: bplugins, abuhayat, himur98, freemius
 Tags: video gallery, youtube gallery, vimeo gallery, video playlist, block
 Tested up to: 7.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 7.4
 Requires at least: 6.5
 Donate link: https://www.buymeacoffee.com/abuhayat
@@ -35,8 +35,25 @@ The Pro version adds self-hosted HTML5 and Wistia sources plus advanced layouts 
 - **Automatic or Custom Thumbnails:** Auto-generate thumbnails or upload custom poster images.
 - **Video Captions:** Add captions or titles to each video in the gallery.
 - **Lightbox Video Popup:** Play videos in an elegant popup lightbox.
+- **Bulk Import:** Paste a list of video links, one per line, and the gallery fills itself in — titles and posters come from YouTube and Vimeo automatically, with no API key to set up.
+- **Thumbnail Shape:** Lay tiles out as 16:9, 4:3, 1:1 or 9:16 for vertical Shorts and Reels, instead of a fixed pixel height.
+- **Video SEO Markup (free):** Every video is described to Google and AI search with Schema.org `VideoObject` JSON-LD, so your gallery can appear as a video result. Comparable plugins sell this as a premium add-on.
+- **Ready-Made Section Patterns:** Five fully configured patterns in the inserter — Video gallery with album filters, Course video library, Product demo showcase, Customer video stories, and Portfolio showreel wall — so you start from a finished layout, not a blank block.
+- **Show / Hide Filter Bar:** A dedicated toggle to show or hide the album filter buttons.
+- **Cached Thumbnails:** YouTube and Vimeo thumbnails are downloaded into your Media Library once and served from your own site after that — no third-party request on every page view, and no more thumbnails that go missing when a provider reshuffles its sizes.
+- **Load More Pagination:** Set how many videos show at first; a Load More button reveals the rest, so a large gallery doesn't overwhelm the page on first paint.
+- **YouTube Shorts Filter:** Show every video, hide Shorts, or show only Shorts — detected from the link itself, no API key needed.
+- **Play Icon on Thumbnails:** A play icon over every tile, so it reads as a video before anyone hovers or clicks — color, size, and the hover zoom are all customizable, or turn it off entirely.
+- **Item Border & Shadow:** Round the corners and add a drop shadow to each thumbnail tile, independent of the gallery container's own border and shadow.
+- **Server-Side Rendered:** The gallery is built on the server, so search engines and visitors see it instantly — even on sites that delay JavaScript (WP Rocket, LiteSpeed, Perfmatters).
 - **Optimized Script Loading:** Scripts load only when the block is used, keeping your site fast.
 - **Translation Ready:** Fully compatible with multilingual websites.
+- **Sort Order:** Show videos in the order you added them, or automatically sort by Newest First / Oldest First — no need to re-order videos by hand after a Bulk Import.
+- **Row Alignment:** Control how a leftover row (one that doesn't fill every column) lines up — left, center, or right — instead of it always being stretched or left stranded on one side.
+- **Per-Device Column & Row Gap:** Set the spacing between tiles separately for desktop, tablet, and mobile, the same way column counts already work per device.
+- **Facebook Video Support:** Add Facebook videos to the gallery alongside YouTube and Vimeo, using Facebook's public embed — no app or API key required.
+- **GDPR Consent-Gated Embeds:** Optionally require a visitor's consent before any YouTube, Vimeo, or Facebook player loads, so the gallery doesn't set third-party cookies until someone agrees to watch.
+- **Google Analytics 4 Video Tracking:** Send a `video_start` event (with title, provider, and URL) to `window.dataLayer` whenever a visitor plays a video — works with GA4 or Google Tag Manager already on the site, nothing extra to configure.
 
 ### Pro Version
 
@@ -64,7 +81,7 @@ The Pro version adds self-hosted HTML5 and Wistia sources plus advanced layouts 
 4. Create albums for filtering, adjust columns and layout, and customize styling; enable or disable filter buttons.
 5. Preview the page on different devices, then publish.
 
-**Using Premium Blocks:** If you insert a Pro block (such as Video Slider or Parallax Row) in the free version, a placeholder appears with a [Get Premium](https://bplugins.com/products/video-gallery-block/pricing/) button – you can remove it if you choose not to upgrade.
+**Using Premium Blocks:** The Pro blocks (Video Slider, Parallax Row and the rest) come with the Pro plugin — install and activate it and they appear in the inserter alongside the free block. To see what they do first, use the **Check Pro Version** button in the block toolbar, or browse the [live demos](https://bblockswp.com/demo/video-gallery).
 
 [Live Demo](https://bblockswp.com/demo/video-gallery) | [Get Video Gallery Block PRO](https://bplugins.com/products/video-gallery-block/pricing/)
 
@@ -171,30 +188,30 @@ Free users can use the WordPress.org support forum. Pro users receive priority e
 8. Video Playlist Gallery
 9. Video Carousel Gallery
 10. Video Gallery Block Settings
-11. Video Gallery Shortcode Generator
-12. Video Shorts Reel
-13. Video Showcase Wall
-14. Video Curriculum Accordion
-15. Video Hotspot Scene
-16. Video Tabs Gallery
-17. Video Scrollytelling Showcase
-18. Video Timeline Gallery
-19. Video Bento Grid
-20. Video Comparison Gallery
-21. Video Justified Gallery
-22. Video Expanding Panels
-23. Video Wall with Floating Player (PiP)
-24. Video Swipe Deck
-25. Video Marquee Wall
-26. Video Flip Cards Gallery
-27. Video Map Gallery
-28. Video Stories
-29. Video Podcast Episodes
-30. Video Property Tour Gallery
-31. Video Workout Planner
-32. Video Wedding Story Gallery
-33. Video Menu Showcase
-34. Video Feature Tour
+11. Video Gallery Shortcode Generator.
+12. Video Shorts Reel.
+13. Video Showcase Wall.
+14. Video Curriculum Accordion.
+15. Video Hotspot Scene.
+16. Video Tabs Gallery.
+17. Video Scrollytelling Showcase.
+18. Video Timeline Gallery.
+19. Video Bento Grid.
+20. Video Comparison Gallery.
+21. Video Justified Gallery.
+22. Video Expanding Panels.
+23. Video Wall with Floating Player (PiP).
+24. Video Swipe Deck.
+25. Video Marquee Wall.
+26. Video Flip Cards Gallery.
+27. Video Map Gallery.
+28. Video Stories.
+29. Video Podcast Episodes.
+30. Video Property Tour Gallery.
+31. Video Workout Planner.
+32. Video Wedding Story Gallery.
+33. Video Menu Showcase.
+34. Video Feature Tour.
 
 == Source Code ==
 
@@ -250,6 +267,44 @@ Build Tools Used: Webpack, Babel, PostCSS, Gulp.
 
 == Changelog ==
 
+= 1.5.1 - 9 September 2026 =
+* **New — Sort Order.** Show the gallery in the order you added the videos, or set it to Newest First / Oldest First and let the block keep it sorted automatically — useful after a Bulk Import, where re-ordering dozens of videos by hand was the alternative.
+* **New — Row Alignment.** When the last row of a gallery doesn't fill every column, it can now be aligned left, center, or right instead of being left stretched to one side by default.
+* **New — Per-Device Column & Row Gap.** Column Gap and Row Gap are now set separately for desktop, tablet, and mobile, matching how the column count already worked per device.
+* **New — Facebook Video Support.** Facebook videos can be added to a gallery alongside YouTube and Vimeo. Playback uses Facebook's public embed player, which needs no app registration or API key — unlike Facebook's oEmbed API, which does.
+* **New — GDPR Consent-Gated Embeds.** An "Require Consent Before Playing" option shows a consent overlay in place of the player until a visitor agrees, so no third-party YouTube/Vimeo/Facebook cookie is set before that. The choice is remembered in the visitor's browser.
+* **New — Google Analytics 4 Video Tracking.** A "Send Video Play Events to Google Analytics" option pushes a `video_start` event to `window.dataLayer` — with the video's title, provider (YouTube/Vimeo/Facebook/other), and URL — every time a visitor opens a video. Works with GA4 or Google Tag Manager already installed on the site; nothing else to configure.
+* **New — Cached Thumbnails.** YouTube and Vimeo thumbnails are now downloaded into your Media Library the first time they're needed and served from your own site after that. Every visitor's browser used to fetch them straight from YouTube or Vimeo on every page view; that's now one request, ever, per video, and a thumbnail can never 404 again just because a provider reshuffled its sizes. Warms up gradually — at most one new thumbnail is cached per page view, so a gallery full of uncached videos never turns a single visit into a dozen downloads at once.
+* **New — Load More Pagination.** A "Videos Per Page" setting under Layout Settings starts the gallery with that many tiles and reveals the rest, a page at a time, behind a Load More button. Off by default (0 = show everything, unchanged from before) so no existing gallery's appearance changes on upgrade.
+* **New — YouTube Shorts Filter.** An Options-panel control to show every video, hide Shorts, or show only Shorts — useful once Bulk Import has pulled in a mixed batch. Shorts are recognised from the link itself, so this needs no API key and no per-video tagging.
+* **New — Play Icon on Thumbnails.** A small play icon now sits over every tile by default, so a gallery reads as video content before anyone hovers or clicks — can be turned off under Options. Once it's on, Style → Item lets you set its color, background, size, and how much it zooms in on hover (or turn that zoom off entirely).
+* **New — Item Border & Shadow.** Style → Item now has the same Border and Shadow controls the overall gallery box already had, but for each individual tile — rounded corners and a drop shadow on the thumbnails themselves, not just the gallery container.
+* **Fix — Filter button active/hover colors.** The "Button Hover/Active Colors" control under Style → Filter had no effect on the active ("current") filter button and, on the Load More button, could leave the hover color applied permanently instead of only on hover. Both now behave as the labels say.
+* **Fix — Custom player controls in the lightbox.** Videos opened in the lightbox now consistently get the plugin's Plyr-based player controls instead of occasionally falling back to the browser's default video controls.
+
+= 1.5.0 - 7 September 2026 =
+* **New — Bulk Import.** Paste a list of video links, one per line, and the whole gallery is built: each video arrives with its title and poster already filled in, resolved through WordPress own oEmbed proxy so there is no API key to obtain and no third-party service involved. Duplicate links and lines that are not links are skipped and reported rather than silently added. Adding twenty videos was sixty fields of typing; it is now one paste.
+* **New — Thumbnail Shape.** Tiles can be 16:9, 4:3, 1:1 or 9:16 instead of a fixed pixel height, so vertical Shorts and Reels stop being cropped to a letterbox. Importing a gallery made entirely of Shorts links sets 9:16 on its own. Galleries built before this option keep the exact height they had.
+* **New — Video SEO markup, in the free version.** Each video in a gallery is now described to search engines with Schema.org `VideoObject` JSON-LD: title, thumbnail, publish date and the player URL. It is what lets a gallery show up as a video result rather than as an unreadable grid, and it is the same markup AI search reads. Every comparable free plugin sells this as a premium feature. There is a **Video SEO markup** toggle under Options for sites whose SEO plugin already does it.
+* Only videos that have a caption and a fetchable thumbnail are described — an invented title is worse for a site than no markup at all. Pasting a YouTube or Vimeo URL fills the caption in automatically, so this usually needs no work.
+* Fixed: a gallery placed with the `[video_gallery]` shortcode had its SEO markup stripped, because the shortcode ran the whole rendered gallery through `wp_kses_post()`, which allows no `<script>` at all. The shortcode now checks the block it is rendering instead, which is the stricter half of what that filter was standing in for.
+* **The gallery is now rendered by the server**, not built from scratch in the browser after the page loads. Search engines see the videos, thumbnails and captions; the space where the gallery goes is no longer blank while the page waits on JavaScript; and a gallery still works as a list of video links if that JavaScript never arrives.
+* **Fixed: the gallery never appeared on sites that delay JavaScript.** The block only ever listened for `DOMContentLoaded`, which performance plugins (WP Rocket's "Delay JavaScript execution", LiteSpeed, Perfmatters) run scripts after. On those sites visitors saw an empty space.
+* **Fixed: tablet and mobile column counts.** Items kept a pixel gutter that the responsive rules did not account for, so each was wider than the column it had to fit — a gallery set to two columns on tablet rendered one.
+* **Fixed: album filters broke for any album name that was not plain English.** Album classes were slugified from the name, which dropped every Bengali, Cyrillic, Arabic and CJK character and produced an invalid selector; names starting with a digit did too, and names that slugified alike ("Music Videos" and "music-videos") collided. Albums are now identified by position.
+* **Fixed: broken YouTube thumbnails.** The block always asked for `maxresdefault.jpg`, which does not exist for every video. Thumbnails now step down through the sizes YouTube actually has.
+* **Vimeo thumbnails.** Pasting a Vimeo URL now fills in the title and the poster, the same as YouTube. Existing Vimeo videos have their thumbnail resolved on the server and cached.
+* **Fixed: captions with formatting showed the visitor literal `<b>` tags.**
+* **Fixed: one broken gallery took down every other gallery on the page.**
+* **Fixed: galleries appeared in the site's own search results**, and following the result landed on the front page. The Video Gallery post type is admin-only now; nothing about editing changes.
+* **Fixed: closing a lightbox could break other galleries** — and any other plugin using the same lightbox — on the same page. The lightbox also opens over the page now rather than inside the gallery, so themes can no longer clip it.
+* **Fixed: the editor’s Get Premium link never pointed at the local pricing screen**, and the editor never loaded its translations. Both were attached to a script handle that does not exist (`vgb-video-gallery-block-editor-script` rather than `vgb-video-gallery-editor-script`).
+* **Added: a Show Filter Bar toggle.** The setting existed in the block's data but was never read, and there was no control for it.
+* **Removed jQuery and Isotope from the front end** (about 120 KB less JavaScript). Filtering is no longer silently dead on sites that defer or dequeue jQuery, and the front-end layout now matches the editor.
+* Thumbnails are lazy-loaded and carry `alt` text; filter buttons and thumbnail links carry accessible labels.
+* Video URLs are looked up through WordPress's own oEmbed proxy instead of a third-party service the site owner never agreed to.
+* Fixed a stray `align` class on every gallery, a stylesheet rule that forced the dashicons font onto unrelated elements on the front end, and two galleries on one page overriding each other's poster fit.
+
 = 1.4.1 - 24 June 2026 =
 * Improved block metadata, keywords, and search discoverability in the Gutenberg editor.
 
@@ -266,41 +321,41 @@ Build Tools Used: Webpack, Babel, PostCSS, Gulp.
 * Minor fixes and styling updates.
 
 = 1.1.2 - 10 May 2026 =
-* Compliance updates and security enhancements for directory guidelines
+* Compliance updates and security enhancements for directory guidelines.
 
 = 1.1.1 - 12 Aug 2025 =
-* Fixed minor issues
-* Added 8 new block styles
-* Added new shortcode styles
-* Added new dashboard
+* Fixed minor issues.
+* Added 8 new block styles.
+* Added new shortcode styles.
+* Added new dashboard.
 
 = 1.1.0 - 30 Jan 2025 =
-* Updated Fancybox library to v5
+* Updated Fancybox library to v5.
 
 = 1.0.8 - 27 Nov 2024 =
-* Added option to hide the "All" album filter
+* Added option to hide the "All" album filter.
 
 = 1.0.7 - 27 Nov 2024 =
-* Added custom label option for common filter
+* Added custom label option for common filter.
 
 = 1.0.6 =
-* Added gallery shadow options
+* Added gallery shadow options.
 
 = 1.0.5 =
-* Improved vertical video height handling
+* Improved vertical video height handling.
 
 = 1.0.4 =
-* Added video captions
-* Prevented loading scripts when block is not used
+* Added video captions.
+* Prevented loading scripts when block is not used.
 
 = 1.0.3 =
-* Added translation support
+* Added translation support.
 
 = 1.0.2 =
-* Fixed add/remove video issues
+* Fixed add/remove video issues.
 
 = 1.0.1 =
-* Automatic video thumbnail generation
+* Automatic video thumbnail generation.
 
 = 1.0.0 =
-* Initial release
+* Initial release.
