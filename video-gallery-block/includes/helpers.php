@@ -381,19 +381,73 @@ function vidgalblk_cache_remote_thumbnail( $remote_url, $cache_key ) {
 }
 
 /**
+ * The best YouTube thumbnail that exists for a video, cached.
+ *
+ * Tried in the same order as `getYoutubeThumbnails()` in the block's script --
+ * maxres (16:9, 1280px), then sd, then hq (both 4:3) -- so the live page shows
+ * the very picture the editor does. It used to go straight to `hqdefault.jpg`
+ * here while the editor showed `maxresdefault.jpg`: a 4:3 image cropped into
+ * a 16:9 tile loses its top and bottom, so the same gallery looked different
+ * on the page (most visibly on Shorts, whose 16:9 thumbnail has the vertical
+ * frame centred between blurred sides), and blurrier too.
+ *
+ * A size YouTube does not have answers 404; it is remembered as missing and
+ * the next one is tried on a later page view. Until a size is cached the
+ * remote URL is returned, and the script steps down the same list on error,
+ * so a missing maxres never shows as a broken image.
+ *
+ * @param string $id YouTube video id.
+ * @return string Image URL.
+ */
+function vidgalblk_youtube_thumbnail( $id ) {
+	$sizes = array( 'maxresdefault', 'sddefault', 'hqdefault' );
+
+	foreach ( $sizes as $size ) {
+		$attachment = get_option( 'vidgalblk_cthumb_yt_' . $size . '_' . $id );
+		$cached     = $attachment ? wp_get_attachment_url( (int) $attachment ) : '';
+		if ( $cached ) {
+			vidgalblk_forget_legacy_youtube_thumbnail( $id );
+			return $cached;
+		}
+	}
+
+	foreach ( $sizes as $size ) {
+		$key = 'yt_' . $size . '_' . $id;
+		if ( get_transient( 'vidgalblk_cmiss_' . $key ) ) {
+			continue;
+		}
+		return vidgalblk_cache_remote_thumbnail( 'https://img.youtube.com/vi/' . $id . '/' . $size . '.jpg', $key );
+	}
+
+	return 'https://img.youtube.com/vi/' . $id . '/hqdefault.jpg';
+}
+
+/**
+ * Remove the hqdefault copy cached under the old key (`yt_{id}`) once a copy
+ * under the new keys exists, so upgrading does not leave a second, unused
+ * image per video in the Media Library.
+ *
+ * @param string $id YouTube video id.
+ */
+function vidgalblk_forget_legacy_youtube_thumbnail( $id ) {
+	$option     = 'vidgalblk_cthumb_yt_' . $id;
+	$attachment = get_option( $option );
+
+	if ( $attachment ) {
+		wp_delete_attachment( (int) $attachment, true );
+		delete_option( $option );
+	}
+}
+
+/**
  * The image to show for one video.
  *
  * A poster the user set always wins -- it is the user's own choice and, if
- * uploaded through the media picker, is already local. Otherwise: YouTube's
- * `hqdefault.jpg`, which is the largest size that exists for every video --
- * `maxresdefault.jpg` does not -- or Vimeo's oEmbed thumbnail. Both are cached
- * into the Media Library so this is asked of the source only once per video,
- * ever, rather than by every visitor's browser on every page view.
- *
- * The script keeps this size rather than reaching for a larger one, so the
- * tile a visitor already sees is never swapped out from under them and no
- * request is spent on a size that may not exist. `getYoutubeThumbnails()` in
- * the JavaScript is what the tile falls back through if this one is missing.
+ * uploaded through the media picker, is already local. Otherwise the best
+ * YouTube thumbnail there is (see vidgalblk_youtube_thumbnail()), or Vimeo's
+ * oEmbed thumbnail. Both are cached into the Media Library so this is asked
+ * of the source only once per video, ever, rather than by every visitor's
+ * browser on every page view.
  *
  * @param array $video One entry from the `videos` attribute.
  * @return string Image URL, or '' if there is nothing to show.
@@ -407,10 +461,7 @@ function vidgalblk_thumbnail_url( $video ) {
 
 	$youtube_id = vidgalblk_youtube_id( $url );
 	if ( $youtube_id ) {
-		return vidgalblk_cache_remote_thumbnail(
-			'https://img.youtube.com/vi/' . $youtube_id . '/hqdefault.jpg',
-			'yt_' . $youtube_id
-		);
+		return vidgalblk_youtube_thumbnail( $youtube_id );
 	}
 
 	$vimeo_id = vidgalblk_vimeo_id( $url );
@@ -493,6 +544,73 @@ function vidgalblk_caption_tags() {
 		),
 		'br'     => array(),
 	);
+}
+
+/**
+ * A video or poster link, made safe to print and to hand to the lightbox.
+ *
+ * Fancybox treats a link that ends like an image file as a picture and writes
+ * it, with the caption, into an <img> tag as text -- so a YouTube or Vimeo link
+ * with ".jpg" on the end is cut back to the plain video link, and
+ * esc_url_raw() drops quotes and angle brackets, which could otherwise close
+ * the attribute the link is written into.
+ *
+ * @param string $url A video or poster link.
+ * @return string The link, safe to use.
+ */
+function vidgalblk_clean_link( $url ) {
+	$url = trim( (string) $url );
+
+	if ( '' === $url ) {
+		return '';
+	}
+
+	if ( preg_match( '/\.(avif|bmp|gif|ico|jpe?g|png|svg|webp)(?:[?#]|$)/i', $url ) ) {
+		if ( preg_match( '#youtube(?:-nocookie)?\.com|youtu\.be#i', $url ) && preg_match( '#(?:[?&]v=|youtu\.be/|/embed/|/shorts/|/live/)([A-Za-z0-9_-]{11})#i', $url, $match ) ) {
+			$url = 'https://www.youtube.com/watch?v=' . $match[1];
+		} elseif ( preg_match( '#vimeo\.com/(?:.*/)?(\d+)#i', $url, $match ) ) {
+			$url = 'https://vimeo.com/' . $match[1];
+		}
+	}
+
+	return esc_url_raw( $url );
+}
+
+/**
+ * The videos of a gallery with every link and caption cleaned.
+ *
+ * A caption can come from a stranger -- it is filled in from the video's title
+ * on YouTube or Vimeo -- and these values are written into the page's markup
+ * and into the data the lightbox script reads, so they are cleaned here once,
+ * before either happens.
+ *
+ * @param array $videos The gallery's videos.
+ * @return array The same videos, cleaned.
+ */
+function vidgalblk_clean_videos( $videos ) {
+	if ( ! is_array( $videos ) ) {
+		return array();
+	}
+
+	foreach ( $videos as $index => $video ) {
+		if ( ! is_array( $video ) ) {
+			continue;
+		}
+
+		foreach ( array( 'video', 'poster' ) as $key ) {
+			if ( isset( $video[ $key ] ) && is_string( $video[ $key ] ) ) {
+				$video[ $key ] = vidgalblk_clean_link( $video[ $key ] );
+			}
+		}
+
+		if ( isset( $video['caption'] ) && is_string( $video['caption'] ) ) {
+			$video['caption'] = wp_kses( $video['caption'], vidgalblk_caption_tags() );
+		}
+
+		$videos[ $index ] = $video;
+	}
+
+	return $videos;
 }
 
 /**
@@ -624,4 +742,28 @@ function vidgalblk_layout_vars( $attributes ) {
 	// caller's `style` with the block supports' own by joining them with a
 	// space, so the last declaration has to be closed.
 	return implode( ';', $declarations ) . ';';
+}
+
+/**
+ * A feed video's channel name, for "Show channel name", or '' when it has
+ * none (only feed videos carry one; an old cached feed does not, until it
+ * refreshes). The same as itemChannel() in utils/channel.js.
+ *
+ * It is a link-like span rather than a link: it sits inside the tile's own
+ * link, and links cannot nest. The block's script opens it in a new tab.
+ *
+ * @param array $video One entry from the videos attribute.
+ * @return string HTML.
+ */
+function vidgalblk_item_channel( $video ) {
+	$channel = is_array( $video ) && isset( $video['channel'] ) ? trim( (string) $video['channel'] ) : '';
+	if ( '' === $channel ) {
+		return '';
+	}
+
+	$url = isset( $video['channelUrl'] ) && preg_match( '#^https://#', (string) $video['channelUrl'] ) ? esc_url( (string) $video['channelUrl'] ) : '';
+
+	return '' !== $url
+		? sprintf( '<span class="vgbItemChannel" role="link" tabindex="0" data-href="%1$s">%2$s</span>', $url, esc_html( $channel ) )
+		: sprintf( '<span class="vgbItemChannel">%s</span>', esc_html( $channel ) );
 }
