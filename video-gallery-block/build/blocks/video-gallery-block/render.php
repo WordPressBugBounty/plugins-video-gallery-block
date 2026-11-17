@@ -61,6 +61,7 @@ $vidgalblk_albums = isset( $attributes['albums'] ) && is_array( $attributes['alb
 $vidgalblk_filter = isset( $attributes['filter'] ) && is_array( $attributes['filter'] ) ? $attributes['filter'] : array();
 $vidgalblk_show_caption   = ! empty( $attributes['options']['showCaptionOnThumbnail'] );
 $vidgalblk_show_channel   = ! empty( $attributes['options']['showChannel'] );
+$vidgalblk_show_time      = ! empty( $attributes['options']['showUploadTime'] );
 $vidgalblk_show_play_icon = false !== ( $attributes['options']['showPlayIcon'] ?? true );
 
 // The filter bar is worth showing only when there is something to filter by.
@@ -80,19 +81,38 @@ foreach ( $vidgalblk_videos as $vidgalblk_video ) {
 }
 
 /*
+ * Size information for the cached thumbnails: their real width/height and, where
+ * a smaller copy exists, a `srcset`. Index-aligned with `thumbs`; null for a poster
+ * the owner chose or a picture still on YouTube/Vimeo, which render as before.
+ */
+$vidgalblk_thumb_sets  = array_map( 'vidgalblk_thumbnail_set', $vidgalblk_thumbs );
+$vidgalblk_thumb_sizes = vidgalblk_thumbnail_sizes( $attributes );
+
+/*
  * Everything goes through `get_block_wrapper_attributes()` rather than being
  * written out alongside it, so that the layout properties merge with whatever
  * `style` the block supports contribute instead of silently colliding with it.
  * It escapes every value it is given.
  */
-$vidgalblk_wrapper = get_block_wrapper_attributes(
-	array(
-		'id'              => $vidgalblk_id,
-		'style'           => vidgalblk_layout_vars( $attributes ),
-		'data-attributes' => wp_json_encode( $attributes ),
-		'data-thumbs'     => wp_json_encode( $vidgalblk_thumbs ),
-	)
+$vidgalblk_wrapper_attrs = array(
+	'id'              => $vidgalblk_id,
+	'style'           => vidgalblk_layout_vars( $attributes ),
+	'data-attributes' => wp_json_encode( $attributes ),
+	'data-thumbs'     => wp_json_encode( $vidgalblk_thumbs ),
 );
+
+// Handed to the script too: it redraws the tiles, and must keep the same
+// picture the server chose instead of fetching the full-size one again.
+if ( array_filter( $vidgalblk_thumb_sets ) ) {
+	$vidgalblk_wrapper_attrs['data-thumb-sets'] = wp_json_encode(
+		array(
+			'sizes' => $vidgalblk_thumb_sizes,
+			'sets'  => $vidgalblk_thumb_sets,
+		)
+	);
+}
+
+$vidgalblk_wrapper = get_block_wrapper_attributes( $vidgalblk_wrapper_attrs );
 
 /**
  * Fires before a gallery's markup is printed.
@@ -104,8 +124,18 @@ $vidgalblk_wrapper = get_block_wrapper_attributes(
  * @param string $id         Unique wrapper element id.
  */
 do_action( 'vidgalblk_before_block', $attributes, $vidgalblk_id );
+
+// Hover effect: the same classes as animationClasses() in utils/animation.js.
+$vidgalblk_root_classes = array( 'vidgalblkVideoGallery' );
+$vidgalblk_animation    = isset( $attributes['animation'] ) && is_array( $attributes['animation'] ) ? $attributes['animation'] : array();
+if ( 'zoom' === ( $vidgalblk_animation['hover'] ?? '' ) ) {
+	$vidgalblk_root_classes[] = 'vgbHover-zoom';
+	if ( in_array( $vidgalblk_animation['speed'] ?? '', array( 'slow', 'fast' ), true ) ) {
+		$vidgalblk_root_classes[] = 'vgbAnimSpeed-' . $vidgalblk_animation['speed'];
+	}
+}
 ?>
-<div <?php echo $vidgalblk_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by get_block_wrapper_attributes(). ?>><div class="vidgalblkVideoGallery">
+<div <?php echo $vidgalblk_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by get_block_wrapper_attributes(). ?>><div class="<?php echo esc_attr( implode( ' ', $vidgalblk_root_classes ) ); ?>">
 	<?php if ( $vidgalblk_show_filter ) : ?>
 		<div id="<?php echo esc_attr( $vidgalblk_id ); ?>-filter" class="filter" role="group">
 			<button type="button" class="current" data-filter="*" aria-pressed="true"><?php echo esc_html( $vidgalblk_filter['commonLabel'] ); ?></button>
@@ -167,17 +197,18 @@ do_action( 'vidgalblk_before_block', $attributes, $vidgalblk_id );
 			>
 				<?php if ( $vidgalblk_thumb ) : ?>
 					<figure class="galleryFigure">
-						<img src="<?php echo esc_url( $vidgalblk_thumb ); ?>" alt="<?php echo esc_attr( $vidgalblk_alt ); ?>" loading="lazy" decoding="async" />
+						<?php $vidgalblk_set = $vidgalblk_thumb_sets[ $vidgalblk_index ] ?? null; ?>
+						<img src="<?php echo esc_url( $vidgalblk_thumb ); ?>" alt="<?php echo esc_attr( $vidgalblk_alt ); ?>" loading="lazy" decoding="async"<?php if ( $vidgalblk_set ) : ?> width="<?php echo (int) $vidgalblk_set['width']; ?>" height="<?php echo (int) $vidgalblk_set['height']; ?>"<?php if ( '' !== $vidgalblk_set['srcset'] ) : ?> srcset="<?php echo esc_attr( $vidgalblk_set['srcset'] ); ?>" sizes="<?php echo esc_attr( $vidgalblk_thumb_sizes ); ?>" data-vgb-thumb<?php endif; ?><?php endif; ?> />
 					</figure>
 				<?php endif; ?>
 
 				<?php
 				// "Show channel name": the channel under the title. A tile
 				// without one keeps the caption it always had.
-				$vidgalblk_channel = $vidgalblk_show_channel ? vidgalblk_item_channel( $vidgalblk_video ) : '';
+				$vidgalblk_channel = vidgalblk_item_details( $vidgalblk_video, $vidgalblk_show_channel, $vidgalblk_show_time );
 				if ( '' !== $vidgalblk_channel ) :
 					?>
-					<div class="galleryItemCaption"><?php if ( $vidgalblk_show_caption && '' !== $vidgalblk_caption ) : ?><span class="galleryItemCaption__text"><?php echo wp_kses( $vidgalblk_caption, vidgalblk_caption_tags() ); ?></span><?php endif; ?><span class="vgbItemDetails"><?php echo $vidgalblk_channel; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in vidgalblk_item_channel(). ?></span></div>
+					<div class="galleryItemCaption"><?php if ( $vidgalblk_show_caption && '' !== $vidgalblk_caption ) : ?><span class="galleryItemCaption__text"><?php echo wp_kses( $vidgalblk_caption, vidgalblk_caption_tags() ); ?></span><?php endif; ?><span class="vgbItemDetails"><?php echo $vidgalblk_channel; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in vidgalblk_item_details(). ?></span></div>
 				<?php elseif ( $vidgalblk_show_caption && '' !== $vidgalblk_caption ) : ?>
 					<div class="galleryItemCaption"><?php echo wp_kses( $vidgalblk_caption, vidgalblk_caption_tags() ); ?></div>
 				<?php endif; ?>
